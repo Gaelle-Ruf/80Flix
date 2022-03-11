@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Bienvenue - {{parent()}}
+{% endblock %}
+
+{% block body %}
+
+    {# CONNECTION PART #}
+    <section class="container text-center">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-6 mx-auto">
+                <h1 class="fw-light">Séries TV et bien plus en illimité.</h1>
+
+                
+                {% if app.user %}
+                <p class="lead fst-italic">
+                    {{app.user.firstname}}, bienvenue sur votre compte <a class="navbar-brand text-danger" href=" {{path('home')}} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-play" viewBox="0 0 16 16">
+                        <path d="M6 10.117V5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43z"/>
+                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                      </svg>
+                    <strong>80's Flix</strong>
+                </a> 
+                </p>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-film"></i></div>
+                <div class="divider-custom-line"></div> 
+                </div>
+                <p class="lead text-muted">Nos dernières entrées au catalogue, rien que pour vous :</p>
+
+
+                {% else %} 
+                <p class="lead text-muted">Où que vous soyez. Annulez à tout moment.</p>   
+                <p>
+                    <a href=" {{path('app_login')}} " class="btn btn-danger my-2">Se connecter</a>
+                    <a href=" {{path('app_register')}} " class="btn btn-secondary my-2">Créer un compte</a>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {# THUMBNAILS PART #}
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {# SERIES CARDS  #}
+                {% for show in shows %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            
+                            <a href="{{path('show_single_slug', {slug: show.slug})}}">            
+                            <img class="img-fluid" src="{{ asset('uploads/')~ show.image }}" alt="" > 
+                            </a>
+                            
+                            <div class="card-body">
+                                <p class="card-text"> {{ show.synopsis }} </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                    {% if app.user %}
+                                    
+                                        <a href="{{path('show_single', {id: show.id})}}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Connectez-vous pour voir la série" class="btn btn-sm btn-outline-secondary">Voir</a>
+                                        {# EDIT BUTTONS FOR ADMIN #}
+                                        {% endif %}
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                        <a href=" {{path('backoffice_tv_show_edit', {id: show.id})}} " class="btn btn-sm btn-outline-secondary">Editer</a>
+                                        {% endif %}
+
+                                        {# FAVS #}
+                                        <div class="text-danger">
+                                        
+                                            {% if is_granted("ROLE_USER") %}
+                                                {% set isFavorite = false %}
+                                                    {% for favoris in show.favoris %}
+                                                        {% if favoris.id == app.user.id %}  
+                                                            {% set isFavorite = true %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if isFavorite %}
+                                                        <a href=" {{path('show_fav_remove', {id: show.id})}} " class="nolink"><i class="fas fa-star mx-2 "></i></a>
+                                                    {% else %}
+                                                        <a href="{{path('show_fav_add', {id: show.id})}}" class="nolink"><i class="far fa-star mx-2"></i></a>
+                                                    {% endif %} 
+                                                {% else %}
+                                                     <i class="far fa-star mx-2"></i>
+                                                {% endif %}
+                                                
+                                            
+                                        </div>   
+                                        {# FAVS END #}
+
+                                    </div>
+
+                                    {# THUMBS LIKE #}
+                                    <small class="text-muted">
+                   
+                                        {{show.nbLikes}}
+                                        <a href="{{path('show_like', {id: show.id})}}">
+                                            <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">
+                                        </a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'backoffice/layout.html.twig' %}
+
+{% block title %} {{ tv_show.title }} - Backoffice - {{parent()}} {% endblock %}
+
+{% block content %}
+    <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light"> {{ tv_show.title }}</h1>
+                </div>
+            </div>
+        <p>
+             <a href=" {{path('backoffice_season_index', {id : tv_show.id})}} " class="btn btn-dark">Liste des saisons</a> <br>
+             <a style="text-decoration: none; color: white;" href="{{ path('backoffice_tv_show_edit', {'id': tv_show.id}) }}" class="btn btn-dark mx-2">Edit</a>
+   
+            {{ include('backoffice/tv_show/_delete_form.html.twig') }}
+        </p>
+        </section>
+
+<div class="container">
+
+    <table style="color: white; width: 800px;" class="table  list-group-flush mx-auto">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tv_show.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ tv_show.title }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ tv_show.synopsis }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ tv_show.image }}</td>
+            </tr>
+            <tr>
+                <th>NbLikes</th>
+                <td>{{ tv_show.nbLikes }}</td>
+            </tr>
+            <tr>
+                <th>PublishedAt</th>
+                <td>{{ tv_show.publishedAt ? tv_show.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ tv_show.createdAt ? tv_show.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ tv_show.updatedAt ? tv_show.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+  
+    </table>
+
+
+    <a style="text-decoration: none; color: white;" href="{{ path('backoffice_tv_show_index') }}" class="btn btn-secondary mx-4 my-2">Retour à la liste</a> 
+
+</div>
+{% endblock %}

@@ -1,0 +1,228 @@
+html,
+body {
+    height: 100%;
+    /* margin-top: 25px; */
+    background: url('../img/confettis.svg');
+    font-family: 'Permanent Marker' /* 'Fugaz One' */, cursive;
+    letter-spacing: 1px;
+}
+
+nav{
+  background-color: #552183;  
+}
+
+.navbar-brand, .btn{
+  color: #30D5C8;
+}
+
+.nav-link{
+  color: #30D5C8;
+}
+
+.form-control::placeholder{
+  color:#cf97f0;
+}
+
+svg{
+  margin-right: 20px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.like{
+    width: 16px;
+    color: #6C757D;
+}
+
+#error{
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.445);
+}
+
+.charalist{
+    list-style: none;
+}
+
+.search{
+    float: left;
+}
+
+.true{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.listLink{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+#black{
+    padding-left: 2rem;
+    margin-top: 3rem;
+    color: white;
+    background-color: #212529;
+}
+
+.divider-custom {
+    margin: 1.25rem 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .divider-custom .divider-custom-line {
+    width: 100%;
+    max-width: 7rem;
+    height: 0.25rem;
+    background-color: #2c3e50;
+    border-radius: 1rem;
+    border-color: #2c3e50;
+  }
+  .divider-custom .divider-custom-line:first-child {
+    margin-right: 1rem;
+  }
+  .divider-custom .divider-custom-line:last-child {
+    margin-left: 1rem;
+  }
+  .divider-custom .divider-custom-icon {
+    color: #2c3e50;
+    font-size: 2rem;
+  }
+  .divider-custom.divider-light .divider-custom-line {
+    background-color: #fff;
+  }
+  .divider-custom.divider-light .divider-custom-icon {
+    color: #fff;
+  }
+  /* The app flash close button */
+.closebtn {
+    margin-left: 15px;
+    color: gray;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+
+
+  .err_txt{
+    color: black;
+    margin-top: 8rem;
+  }
+
+  .err_tx{
+    color: white;
+    margin-top: 8rem;
+  }
+
+  .roundimg{
+    float: right;
+    width : 150px; height : 150px;
+    border: 1px solid black;
+    box-shadow:8px 6px 10px rgba(0, 0, 0, 0.445);
+    -moz-border-radius : 75px;
+    -webkit-border-radius : 75px;
+    border-radius : 75px;
+  }
+
+:root{
+  --offcanvas-width: 270px;
+  --topNavbarHeight: 56px; 
+  --bs-cyan: #0dcaf0;
+}
+
+.sidebar-nav{
+  width: var(--offcanvas-width);
+}
+
+.sidebar-link{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link .right-icon{
+    display: inline-flex;
+}
+
+.sidebar-link[aria-expanded="true"] .right-icon{
+    transform: rotate(180deg);
+    transition: all ease 0.25s;
+}
+
+@media (min-width:992px) {
+  body{
+    overflow: auto !important;
+  }
+  .offcanvas-backdrop::before{
+    display: none;
+  }
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+  .sidebar-nav{
+    transform: none;
+    visibility: visible !important;
+    top:var(--topNavbarHeight);
+    height: calc(100% - var(--topNavbarHeight));
+  }
+}
+
+.bg-custom {
+  --bs-bg-opacity: 1;
+  background-color: #586066;
+
+}
+
+.shadoo{
+  box-shadow:8px 6px 10px rgba(0, 0, 0, 0.445);
+}
+
+#al{
+  margin: 0;
+}
+
+.nolink, .nolink:hover, .nolink a, .nolink:active, .nolink:visited{
+  text-decoration: none;
+  color: red;
+}
+
+.fds{
+  position: absolute;
+  right: 20px;
+}
