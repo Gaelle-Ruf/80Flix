@@ -4,7 +4,7 @@
 
 {% block content %}
 
- 
+
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -13,7 +13,7 @@
             </div>
         </section>
 
-    <table class="table list-group-flush " style="color: white; float: left;">
+    <table class="table list-group-flush" style="color: white; float: left;">
         <thead>
             <tr>
                 <th>#</th>
@@ -30,7 +30,7 @@
             <tr>
                 <td>{{ tv_show.id }}</td>
                 <td>{{ tv_show.title }}</td>
-                <td>{{ tv_show.synopsis }}</td>
+                <td>{{ tv_show.synopsis | u.truncate(150, '...')}}</td>
                 <td>{{ tv_show.image }}</td>
                 <td>{{ tv_show.nbLikes }}</td>
                 <td>{{ tv_show.publishedAt ? tv_show.publishedAt|date('Y-m-d H:i:s') : '' }}</td>

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-     Connection - {{parent()}}
+    Connexion - {{parent()}}
 {% endblock %}
 
 {% block body %}
- <section class="py-5  container">
-  <div class="form-signin py-5">
+    <section class="py-5 container">
+    <div class="form-signin py-5">
         <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -22,12 +22,12 @@
 
             <div class="form-floating">
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="E-Mail" class="form-control" autocomplete="email" required autofocus>
-                <label for="inputEmail">Email </label>
+                <label for="inputEmail">Email :</label>
             </div>
 
             <div class="form-floating">
                 <input type="password" placeholder="Mot de passe" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                <label for="inputPassword">Mot de passe</label>
+                <label for="inputPassword">Mot de passe :</label>
             </div>
 
 
@@ -45,12 +45,15 @@
                     <input type="checkbox" name="_remember_me"> Rester connecté
                 </label>
             </div> #}
-       
 
             <button class="w-100 btn btn-lg btn-secondary" type="submit">Se connecter</button>
         </form>
 
-        <p class="fst-italic text-center my-3">Pas encore inscrit? <a href=" {{path('app_register')}} ">Cliquez ici</a></p>
+        <p class="text-center my-3">Pas encore inscrit ?</p>
+        <p class="text-center my-3">
+            <a href=" {{path('app_register')}} ">Cliquez ici</a>
+        </p>
+        </p>
     </div>
 
     </section>

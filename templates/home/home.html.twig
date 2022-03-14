@@ -9,32 +9,62 @@
     <section class="container text-center">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-6 mx-auto">
-                <h1 class="fw-light">Séries TV et bien plus en illimité.</h1>
+                <h1 class="fw-light">Vos séries TV en illimité</h1>
 
                 
                 {% if app.user %}
-                <p class="lead fst-italic">
-                    {{app.user.firstname}}, bienvenue sur votre compte <a class="navbar-brand text-danger" href=" {{path('home')}} ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-play" viewBox="0 0 16 16">
-                        <path d="M6 10.117V5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43z"/>
-                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
-                      </svg>
+                <p class="lead lead-welcome{#  fst-italic #}">
+                    <span class="bien">Bien</span>
+                    <span class="re">re</span>
+                    <span class="venue">venue en 1980 </span> 
+                    <span class="user-name"> {{app.user.firstname}} ! </span>
+                    {# <div class="text-underlined"></div> #}
+                    {# <a class="navbar-brand text-danger" href=" {{path('home')}} ">
                     <strong>80's Flix</strong>
-                </a> 
+                    </a>  #}
                 </p>
+
+                {# 
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-film"></i></div>
-                <div class="divider-custom-line"></div> 
-                </div>
-                <p class="lead text-muted">Nos dernières entrées au catalogue, rien que pour vous :</p>
+                    <div class="divider-custom-icon"> #}
+                        {# <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                width="32.000000pt" height="32.000000pt" viewBox="0 0 64.000000 64.000000"
+                                preserveAspectRatio="xMidYMid meet">                            
+                                <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)" fill=""stroke="none">
+                                <path d="M240 547 c-49 -16 -133 -102 -148 -153 -16 -56 -15 -81 4 -88 20 -8
+                                428 -8 448 0 36 14 8 109 -51 174 -65 72 -158 97 -253 67z"/>
+                                <path d="M80 245 c0 -13 33 -15 240 -15 207 0 240 2 240 15 0 13 -33 15 -240
+                                15 -207 0 -240 -2 -240 -15z"/>
+                                <path d="M180 171 c0 -5 7 -12 16 -15 20 -8 228 -8 248 0 43 16 3 24 -124 24
+                                -77 0 -140 -4 -140 -9z"/>
+                                <path d="M280 95 c0 -11 11 -15 40 -15 29 0 40 4 40 15 0 11 -11 15 -40 15
+                                -29 0 -40 -4 -40 -15z"/>
+                                </g>
+                                <defs>
+                                <linearGradient id="MyGradient">
+                                <stop offset="30%" stop-color="#C64034" />
+                                <stop offset="50%" stop-color="#DB3ED4" />
+                                <stop offset="90%" stop-color="#F1970B" />
+                                </linearGradient>
+                            </defs>
+                        </svg> #}
+                        
+                        {# <i class="fas fa-film"></i>
+                    </div>
+                    <div class="divider-custom-line"></div>
+                </div> #}
+                <p class="lead lead-news">Les nouvelles anciennetés</p>
 
 
                 {% else %} 
-                <p class="lead text-muted">Où que vous soyez. Annulez à tout moment.</p>   
+                <p class="lead">
+                    <span class="bien">Bien</span>
+                    <span class="re">re</span>
+                    <span class="venue">venue en 1980 !</span>
                 <p>
-                    <a href=" {{path('app_login')}} " class="btn btn-danger my-2">Se connecter</a>
-                    <a href=" {{path('app_register')}} " class="btn btn-secondary my-2">Créer un compte</a>
+                    <a href=" {{path('app_login')}} " class="btn my-2 btn-secondary">Se connecter</a>
+                    <a href=" {{path('app_register')}} " class="btn my-2 btn-secondary">Créer un compte</a>
                 </p>
                 {% endif %}
             </div>
@@ -42,67 +72,81 @@
     </section>
 
     {# THUMBNAILS PART #}
-    <div class="py-5 bg-light">
+    <div class="py-5 {# bg-light #}">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             {# SERIES CARDS  #}
                 {% for show in shows %}
-                    <div class="col">
-                        <div class="card shadow-sm">
+                    <div class="card-group">
+                        <div class="card shadow-sm border-secondary">
                             
-                            <a href="{{path('show_single_slug', {slug: show.slug})}}">            
-                            <img class="img-fluid" src="{{ asset('uploads/')~ show.image }}" alt="" > 
+                            <a href="{{path('show_single_slug', {slug: show.slug})}}">                                   
+                                <img class="img-fluid" src="{{ asset('uploads/')~ show.image }}" alt="">                            
                             </a>
                             
                             <div class="card-body">
-                                <p class="card-text"> {{ show.synopsis }} </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    {% if app.user %}
+                                <p class="card-text-title"> {{ show.title }}</p>       
+
+                                <p class="card-text-description"> {{ show.synopsis | u.truncate(150, '...')}} 
+                                    {# FAVS #}
+                                    <div class="favorite">
                                     
-                                        <a href="{{path('show_single', {id: show.id})}}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Connectez-vous pour voir la série" class="btn btn-sm btn-outline-secondary">Voir</a>
-                                        {# EDIT BUTTONS FOR ADMIN #}
-                                        {% endif %}
-                                        {% if is_granted("ROLE_ADMIN") %}
-                                        <a href=" {{path('backoffice_tv_show_edit', {id: show.id})}} " class="btn btn-sm btn-outline-secondary">Editer</a>
-                                        {% endif %}
-
-                                        {# FAVS #}
-                                        <div class="text-danger">
-                                        
-                                            {% if is_granted("ROLE_USER") %}
-                                                {% set isFavorite = false %}
-                                                    {% for favoris in show.favoris %}
-                                                        {% if favoris.id == app.user.id %}  
-                                                            {% set isFavorite = true %}
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                    {% if isFavorite %}
-                                                        <a href=" {{path('show_fav_remove', {id: show.id})}} " class="nolink"><i class="fas fa-star mx-2 "></i></a>
-                                                    {% else %}
-                                                        <a href="{{path('show_fav_add', {id: show.id})}}" class="nolink"><i class="far fa-star mx-2"></i></a>
-                                                    {% endif %} 
+                                        {% if is_granted("ROLE_USER") %}
+                                            {% set isFavorite = false %}
+                                                {% for favoris in show.favoris %}
+                                                    {% if favoris.id == app.user.id %}  
+                                                        {% set isFavorite = true %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if isFavorite %}
+                                                    <a href=" {{path('show_fav_remove', {id: show.id})}} " class="nolink" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajouter aux favoris"><i class="fas fa-star mx-2 "></i></a>
                                                 {% else %}
-                                                     <i class="far fa-star mx-2"></i>
-                                                {% endif %}
-                                                
-                                            
-                                        </div>   
-                                        {# FAVS END #}
-
-                                    </div>
-
-                                    {# THUMBS LIKE #}
-                                    <small class="text-muted">
-                   
-                                        {{show.nbLikes}}
-                                        <a href="{{path('show_like', {id: show.id})}}">
-                                            <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">
-                                        </a>
-                                    </small>
-                                </div>
+                                                    <a href="{{path('show_fav_add', {id: show.id})}}" class="nolink"><i class="far fa-star mx-2"></i></a>
+                                                {% endif %} 
+                                            {% else %}
+                                                <i class="far fa-star mx-2"></i>
+                                        {% endif %}
+                                        
+                                    </div>   
+                                </p>
+                                    {# FAVS END #}                                        
                             </div>
+                                
+                                <div class="d-flex justify-content-start align-items-end">
+                                    <div class="btn-group">
+                                        {% if app.user %}
+                                        <a 
+                                            href="{{path('show_single', {id: show.id})}}" 
+                                            class="btn btn-sm"
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-placement="bottom" 
+                                            title="Vous devez être connecté(e)">
+                                            Voir
+                                        </a>                                    
+                                        {% endif %}
+
+                                        {# EDIT BUTTONS FOR ADMIN #}
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                        <a  
+                                            href=" {{path('backoffice_tv_show_edit', {id: show.id})}} " 
+                                            class="btn btn-sm" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-placement="bottom" 
+                                            title="Vous devez être connecté(e)">
+                                            Modifier
+                                        </a>
+                                        {% endif %}
+                                        
+                                            {# THUMBS LIKE #}
+                                            <small class="likes">                                        
+                                                <a href="{{path('show_like', {id: show.id})}}">                                                    
+                                                    <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">                                                    
+                                                    <span>{{show.nbLikes}}</span>
+                                                </a>
+                                            </small>                                    
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 {% endfor %}

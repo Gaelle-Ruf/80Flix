@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    S'enregistrer - {{parent()}} 
+    Inscription - {{parent()}} 
 {% endblock %}
 
 {% block body %}
@@ -15,7 +15,7 @@
             <div class="form-floating my-2">
             {{ form_widget(registrationForm.email) }}
             {{ form_label(registrationForm.email) }}
-             </div>
+            </div>
             <div class="form-floating my-2">
             {{ form_widget(registrationForm.lastname)}}
             {{ form_label(registrationForm.lastname)}}
@@ -32,13 +32,13 @@
             {{ form_widget(registrationForm.plainPassword.second) }}
             {{ form_label(registrationForm.plainPassword.second )}}
             </div>
-            <div class="form-floating my-2">
+            {# <div class="form-floating my-2">
             {{ form_widget(registrationForm.agreeTerms) }}
             {{ form_label(registrationForm.agreeTerms) }}
             </div>
-        
+            #}
 
-            <button type="submit" class="w-100 btn btn-lg btn-secondary">S'inscrire</button>
+            <button type="submit" class="w-100 btn btn-lg btn-secondary">Valider mon inscription</button>
         {{ form_end(registrationForm) }}
         </div>
     </section>

@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
                     'placeholder'=>'Email'
                 ]
             ])
-            ->add('agreeTerms', CheckboxType::class, [
+            /* ->add('agreeTerms', CheckboxType::class, [
                 'label'=>'Accepter les conditions',
                 'mapped' => false,
                 'constraints' => [
@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez accepter les conditions.',
                     ])
                 ]
-            ])
+            ]) */
             ->add('lastname',null,[
                 'label'=>'Nom',
                 'attr'=>[
@@ -49,8 +49,8 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passe doivent être identiques',
                 'options' => ['attr' => ['class' => 'password-field','placeholder'=>'Mot de passe']],
                 'required' => true,
-                'first_options'  => ['label' => 'Mot de passe (6 caractères minimum)'],
-                'second_options' => ['label' => 'Confirmez votre mot de passe'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password',],
                 'constraints' => [
