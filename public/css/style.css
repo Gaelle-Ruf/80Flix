@@ -181,8 +181,17 @@ img.img-fluid {
 }
 
 /* CARDS >> POSITION ICON & LIKES */
-small{
-margin-left: 100px;
+/* small{
+margin-right: 1rem;
+} */
+
+.icons-card{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3rem;
+  margin-left: 2.5rem;
+  justify-content: space-between;
+  width: 110px;
 }
 
 /* CARDS >> RENDER LIKES */
@@ -269,6 +278,12 @@ button.w-100.btn{
   border:none;
 }
 
+.favorite a svg{
+  width: 16px;
+  height: auto;
+  margin-top: 6.5px;
+}
+
 
 
 
@@ -342,8 +357,8 @@ p.lead{
 
 
 svg{
-  margin-right: 20px;
-  margin-left: 20px; 
+  /* margin-right: 20px;
+  margin-left: 20px;  */
   shape-rendering: crispEdges;
   fill: url(#MyGradient);
 }
