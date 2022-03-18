@@ -22,16 +22,10 @@ class CharacterType extends AbstractType
     {
         $builder
             ->add('firstname', null, [
-                'label'=>'Prénom du personnage',
-                'attr'=>[
-                    'placeholder'=>'Prénom'
-                ]
+                'label'=>'Prénom du personnage'
             ])
             ->add('lastname', null, [
-                'label'=>'Nom du personnage',
-                'attr'=>[
-                    'placeholder'=>'Nom'
-                ]
+                'label'=>'Nom du personnage'
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe du personnage',
@@ -47,8 +41,7 @@ class CharacterType extends AbstractType
             ->add('age',null, [
                 'label'=> 'Âge',
                 'attr'=>[
-                    'type'=> 'number',
-                    'placeholder'=>'Âge du personnage'
+                    'type'=> 'number'
                 ]
             ])
             ->add('imgBrut', FileType::class, [
@@ -62,21 +55,21 @@ class CharacterType extends AbstractType
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Seuls les fichiers images de type JPEG & PNG sont autorisés',
+                        'mimeTypesMessage' => 'Seuls les fichiers de type JPEG & PNG sont autorisés',
                     ])
                 ]
             ])
             ->add('tvshows', EntityType::class,[
                     'class'=> TvShow::class,
-                    'label'=>'Choisir la série télé de votre personnage',
+                    'label'=>'Série de votre personnage',
                     'choice_label'=>'title',
                     'multiple'=> true
             ])
 
             ->add('submit', SubmitType::class,[
-                'label'=>'Envoyer',
+                'label'=>'Enregistrer',
                 'attr'=>[
-                    'class'=>'btn btn-secondary mb-3'
+                    'class'=>'badge btn-bo edit'
                 ]
             ])
         ;

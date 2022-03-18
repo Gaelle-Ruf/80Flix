@@ -5,17 +5,16 @@
 {% endblock %}
 
 {% block content %}
- <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light"> {{ user.firstname }}</h1>
-                </div>
-            </div>
-        </section>
+<section class="bo py-2 text-center container-fluid bo">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light"> {{ user.firstname }}</h1>        
+        </div>
+    </div>
+</section>
 
-<div class="container">
+<div class="container-fluid bo"> 
 
-   
     <table style="color: white; width: 800px;" class="table  list-group-flush mx-auto">
         <tbody>
             <tr>
@@ -39,16 +38,13 @@
                 <td>{{ user.roles[0]}}</td>
             </tr>
         </tbody>
-    <a style="text-decoration: none; color: white;" href="{{ path('user_update', {'id': user.id}) }}" class="btn btn-success mx-2 my-2">Edit</a>
-   
-    {{ include('backoffice/user/delete.html.twig') }}
-    </table>
-
-
-
-    <a style="text-decoration: none; color: white;" href="{{ path('user_home') }}" class="btn btn-secondary mx-4 my-2">Retour à la liste</a> 
-
+        
 </div>
-
+    </table>
+    <div class="input-group-sm mb-3 mx-auto text-center" style="width: 400px;">
+        <a class="badge btn-bo edit" href="{{ path('user_update', {'id': user.id}) }}">Modifier</a>
+            {{ include('backoffice/user/delete.html.twig') }}
+        <a class="badge btn-bo return" href="{{ path('user_home') }}">Retour à la liste</a>
+    </div>
 </main>
 {% endblock %}

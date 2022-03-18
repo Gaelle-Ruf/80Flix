@@ -45,7 +45,7 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             $message =(new \Swift_Message('Activation de votre compte'))
-                    ->setFrom('admin@oclock.io')
+                    ->setFrom('gaelle.ruf@gmail.com')
                     ->setTo($user->getEmail())
                     ->setBody(
                         $this->renderView(
@@ -59,7 +59,7 @@ class RegistrationController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Veuillez activer votre compe par mail'
+                'Nous venons de vous envoyer un email contenant le lien d\'activation de votre compte'
             )
             ;
 

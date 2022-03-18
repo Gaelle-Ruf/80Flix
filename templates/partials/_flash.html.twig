@@ -3,7 +3,7 @@
 <div class="position-absolute top-35 start-50 mt-3">
 {% for label, messages in app.flashes %}
     {% for message in messages %}   
-            <div class="alert alert-{{ label }}" role="alert">
+            <div class="alert alert-{{ label }} close alert-dismissible fade show" data-dismiss="alert" role="alert">
                 {{ message }}
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>

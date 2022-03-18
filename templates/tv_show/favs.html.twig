@@ -9,10 +9,10 @@
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-6 mx-auto">
             <h1 class="fw-light">Liste des favoris</h1>
-            <p class="lead">Mes séries préférées</p>
+            <p class="lead lead-news">Mes séries préférées</p>
             <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                {# <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div> #}
                 <div class="divider-custom-line"></div>
             </div>
         </div>
@@ -44,14 +44,41 @@
                                             {% if is_granted("ROLE_ADMIN") %}
                                                 <a href=" {{path('backoffice_tv_show_edit', {id: show.id})}} " class="btn btn-sm btn-outline-secondary">Modifier</a>
                                             {% endif %}
+                                            <div class="icons-card">
+                                        
+                                            {# THUMBS LIKE #}
+                                            <small>                               
+                                                <a href="{{path('show_like', {id: show.id})}}"> 
+                                                    <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">       
+                                                    {{show.nbLikes}}
+                                                </a>
+                                                
+                                            </small>
+
+                                            {# FAVS  #}
+                                            <div class="favorite">
+                                        
+                                            {% if is_granted("ROLE_USER") %}
+                                                {% set isFavorite = false %}
+                                                    {% for favoris in show.favoris %}
+                                                        {% if favoris.id == app.user.id %}  
+                                                            {% set isFavorite = true %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if isFavorite %}
+                                                        <a href=" {{path('show_fav_remove', {id: show.id})}} " class="nolink" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajouter aux favoris"><i class="fas fa-star "></i></a>
+                                                    {% else %}
+                                                        <a href="{{path('show_fav_add', {id: show.id})}}" class="nolink"><i class="far fa-star"></i></a>
+                                                    {% endif %} 
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                            {% endif %}
+
                                         </div>
-                                        <small class="text-muted">
-                                            {{show.nbLikes}}
-                                            <a href="{{path('show_like', {id: show.id})}}">
-                                            <img src=" {{asset('img/like.svg')}} " alt="" class="like">
-                                            </a>
-                                        </small>
-                                    </div>
+                                        {# FAVS END #}
+                                        </div>
+                                        </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>    
@@ -59,17 +86,17 @@
                 {% endfor %}
             {% endfor %}
 
-        </div>
+            </div>
             {# NO FAVORITES #}
             {% if isFavorite == false %}
             <div class="d-flex flex-row bd-highlight">
-            <div class="p-2 bd-highlight">
-                <h3 class="fw-bold">Vous n'avez pas encore de favoris</h3>
-                <p class="lead fst-italic">Séléctionnez vos séries préférées en cliquant sur un coeur pour l'ajouter à votre sélection </p>
-            </div>
-            <div class="p-2 bd-highlight">
-                <img class="img-fluid float-end"  src="{{ asset('img/family.png') }}" alt="" >
-            </div>
+                <div class="p-2 bd-highlight">
+                    <h3 class="fw-bold">Vous n'avez pas encore de favoris</h3>
+                    <p class="lead fst-italic">Mettez vos séries préférées en favoris en cliquant sur l'étoile</p>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <img class="img-fluid float-end"  src="{{ asset('img/family.png') }}" alt="" >
+                </div>
             </div>
             {% endif %}
     </div>

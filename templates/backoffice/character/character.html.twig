@@ -6,26 +6,34 @@
 
         <section class="container text-center">
             <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8  mx-auto">
+                <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Liste des personnages</h1>
                 </div>
             </div>
         </section>
 
+        <table class="table list-group-flush mx-auto w-auto table-responsive" style="color: white; margin=auto;">
+            <thead>
+                <tr class="col">
+                    <th class="col">#</th>
+                    <th class="col">Nom des personnages</th>
+                    <th class="col"></th>
+                </tr>
+            </thead>
+            <tbody>
 
-        <ul class="list-group list-group-flush mx-auto " style="width: 600px;">
             {% for character in characters %}
-                <li style="background-color: #212529; color: #fff" class="list-group-item">{{character.lastname}} {{character.firstname}} 
-                
-                {# DELETE #}
-                <a style="text-decoration: none; color: white; float: right;" href="{{path('backoffice_character_delete',{ id: character.id})}}" class="card-link badge rounded-pill bg-danger mx-2">Suppr.</a>
-
-                {# EDIT #}
-                <a style="text-decoration: none; color: white; float: right" href="{{path('backoffice_character_update',{ id: character.id})}}" class="card-link badge rounded-pill bg-success">Edit</a>
-                
-                </li>
+                <tr class="fw-light">
+                    <td>{{ character.id}}
+                    <td>{{character.lastname}} {{character.firstname}}</td>
+                    <td>
+                        <a class=" badge btn-bo edit" href="{{path('backoffice_character_update',{ id: character.id})}}">Modifier</a>
+                        <a class=" badge btn-bo delete" href="{{path('backoffice_character_delete',{ id: character.id})}}">Supprimer</a>
+                    </td>
+                </tr>
             {% endfor %}
-        </ul>
+            </tbody>
+        </table>
 
     </main>
 

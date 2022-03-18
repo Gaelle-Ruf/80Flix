@@ -14,13 +14,11 @@
             </div>
         </section>
 
-        <div class="input-group-sm mb-3 mx-auto" style="width: 450px;">
+        <div class="input-group-sm mb-3 mx-auto text-center" style="width: 600px;">
             {{ form_start(formView, {'attr': {'novalidate': 'novalidate'}}) }}
                 
             {{ form_end(formView) }}
+            <a class="badge btn-bo return" href=" {{ path('backoffice_category_home') }} ">Retour à la liste</a>  
         </div>  
-
-         <a href=" {{ path('backoffice_category_home') }} " class="btn btn-secondary my-4 mx-4">Retour à la liste</a>  
-
     </main>
 {% endblock %}

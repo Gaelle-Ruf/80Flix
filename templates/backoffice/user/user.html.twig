@@ -6,16 +6,16 @@
 
 {% block content %}
 
-<section class="py-5 text-center container">
+<section class="bo py-2 text-center container-fluid bo">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">TV Shows</h1>
+                    <h1 class="fw-light">Utilisateurs</h1>
                     <a class="btn btn-secondary mx-4 my-4" href="{{ path('user_add') }}">Créer nouvel utilisateur</a>
                 </div>
             </div>
         </section>
 
-    <table class="table list-group-flush " style="color: white; float: left;">
+    <table class="table list-group-flush" style="color: white; float: left;">
         <thead>
             <tr>
                 <th>#</th>
@@ -34,8 +34,8 @@
                 <td>{{ user.firstname}}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a style="text-decoration: none; color: white;" href="{{ path('user_show', {'id': user.id}) }}" class="card-link badge rounded-pill bg-success">Détail</a>
-                    <a style="text-decoration: none; color: white; " href="{{ path('user_update', {'id': user.id}) }}" class="card-link badge rounded-pill bg-danger mx-2">Edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}" class="badge btn-bo detail">Détail</a>
+                    <a href="{{ path('user_update', {'id': user.id}) }}" class="badge btn-bo edit">Modifier</a>
                     
                 </td>
             </tr>

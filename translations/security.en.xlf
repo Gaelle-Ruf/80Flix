@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="Invalid credentials.">
                 <source>Invalid credentials.</source>
-                <target>Le mot de passe est invalide</target>
+                <target>Le mot de passe n'est pas valide</target>
             </trans-unit>
 
             <trans-unit id="Email could not be found.">

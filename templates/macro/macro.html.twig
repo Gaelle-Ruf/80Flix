@@ -11,7 +11,7 @@
         {% if character.imgUpload is null %}
 
         {% else %}
-        <img src=" {{asset('uploads/') ~ character.imgUpload}} " alt="" class="roundimg">
+        <img src=" {{asset('uploads/') ~ character.imgUpload}} " alt=" " class="roundimg">
         {% endif %}
         <br>
         {# NOM PRENOM #}
@@ -27,7 +27,7 @@
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-chara" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>

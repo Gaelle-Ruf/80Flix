@@ -8,10 +8,10 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-6 mx-auto">
                     <h1 class="fw-light">Disponible maintenant {# sur <span>80's Flix</span> #}</h1>
-                    <p class="lead">Découvrez notre sélection</p>
+                    <p class="lead lead-news">Découvrez notre sélection</p>
                     <div class="divider-custom">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-tv"></i></div>
+                        {# <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-tv"></i></div> #}
                         <div class="divider-custom-line"></div>
                     </div>
                 </div>
@@ -35,13 +35,24 @@
                                     <div class="d-flex justify-content-start align-items-center">
                                         <div class="btn-group">
                                             <a href=" {{path('show_single_slug', {slug: tvshow.slug})}} " class="btn btn-sm btn-outline-secondary">Voir</a>
-                                        {# EDIT BUTTONS FOR ADMIN #}
-                                        {% if is_granted("ROLE_ADMIN") %}
+                                            {# EDIT BUTTONS FOR ADMIN #}
+                                            {% if is_granted("ROLE_ADMIN") %}
                                             <a href=" {{path('backoffice_tv_show_edit', {id: tvshow.id})}} " class="btn btn-sm btn-outline-secondary">Modifier</a>
-                                        {% endif %}
+                                            {% endif %}
 
-                                        {# FAVS #}
-                                        <div class="text-danger">
+                                            <div class="icons-card">
+                                        
+                                            {# THUMBS LIKE #}
+                                            <small>                               
+                                                <a href="{{path('show_like', {id: tvshow.id})}}"> 
+                                                    <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">       
+                                                    {{tvshow.nbLikes}}
+                                                </a>
+                                                
+                                            </small>
+
+                                            {# FAVS  #}
+                                            <div class="favorite">
                                         
                                             {% if is_granted("ROLE_USER") %}
                                                 {% set isFavorite = false %}
@@ -51,25 +62,20 @@
                                                         {% endif %}
                                                     {% endfor %}
                                                     {% if isFavorite %}
-                                                        <a href=" {{path('show_fav_remove', {id: tvshow.id})}} " class="nolink"><i class="fas fa-star mx-2 "></i></a>
+                                                        <a href=" {{path('show_fav_remove', {id: tvshow.id})}} " class="nolink" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajouter aux favoris"><i class="fas fa-star "></i></a>
                                                     {% else %}
-                                                        <a href="{{path('show_fav_add', {id: tvshow.id})}}" class="nolink"><i class="far fa-star mx-2"></i></a>
+                                                        <a href="{{path('show_fav_add', {id: tvshow.id})}}" class="nolink"><i class="far fa-star"></i></a>
                                                     {% endif %} 
                                                 {% else %}
-                                                    <i class="far fa-star mx-2"></i>
-                                                {% endif %}
-                                                
+                                                    <i class="far fa-star"></i>
+                                            {% endif %}
                                             
-                                        </div>   
-                                        {# FAVS END #}   
+                                            </div> 
+                                            {# FAVS END #}  
+                                            </div>
 
                                         </div>
-                                        <small class="text-muted">
-                                            {{tvshow.nbLikes}}
-                                            <a href="{{path('show_like', {id: tvshow.id})}}">
-                                            <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">
-                                        </a>
-                                        </small>
+                                        
                                     </div>
                                 </div>
                             </div>

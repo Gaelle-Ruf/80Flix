@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="py-5 text-center container">
+<section class="bo py-2 text-center container-fluid bo">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Ajouter un utilisateur</h1>
@@ -17,7 +17,7 @@
     {{ include('backoffice/user/form.html.twig') }}
 
 
-    <a class="btn btn-secondary m-4" style="text-decoration: none; color: white;" href="{{ path('user_home') }}">Retour à la liste</a>
+    <a class="badge btn btn-bo return" href="{{ path('user_home') }}">Retour à la liste</a>
 
     </div>
 

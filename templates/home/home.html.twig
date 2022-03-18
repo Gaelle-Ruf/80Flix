@@ -8,12 +8,12 @@
     {# CONNECTION PART #}
     <section class="container text-center">
         <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-6 mx-auto">
-                <h1 class="fw-light">Vos séries TV en illimité</h1>
+            <div class="col-lg-7 col-md-6 mx-auto">
+                {# <h1 class="fw-light">Vos séries TV en illimité</h1> #}
 
                 
                 {% if app.user %}
-                <p class="lead lead-welcome{#  fst-italic #}">
+                <p class="lead lead-news{#  fst-italic #}">
                     <span class="bien">Bien</span>
                     <span class="re">re</span>
                     <span class="venue">venue en 1980 </span> 
@@ -55,6 +55,11 @@
                     <div class="divider-custom-line"></div>
                 </div> #}
                 <p class="lead lead-news">Les nouvelles anciennetés</p>
+                    <div class="divider-custom">
+                    {# <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div> #}
+                    <div class="divider-custom-line"></div>
+            </div>
 
 
                 {% else %} 
@@ -62,7 +67,8 @@
                     <span class="bien">Bien</span>
                     <span class="re">re</span>
                     <span class="venue">venue en 1980 !</span>
-                <p>
+                </p>
+                <p class="btn-welmcome">
                     <a href=" {{path('app_login')}} " class="btn my-2 btn-secondary">Se connecter</a>
                     <a href=" {{path('app_register')}} " class="btn my-2 btn-secondary">Créer un compte</a>
                 </p>
@@ -79,15 +85,14 @@
             {# SERIES CARDS  #}
                 {% for show in shows %}
                     <div class="card-group">
-                        <div class="card shadow-sm border-secondary">
+                        <div class="card shadow-sm">
                             
                             <a href="{{path('show_single_slug', {slug: show.slug})}}">                                   
                                 <img class="img-fluid" src="{{ asset('uploads/')~ show.image }}" alt="">                            
                             </a>
                             
                             <div class="card-body">
-                                <p class="card-text-title"> {{ show.title }}</p>       
-
+                                <p class="card-text-title"> {{ show.title }}</p>  
                                 <p class="card-text-description"> {{ show.synopsis | u.truncate(150, '...')}} 
                                     {# FAVS #}
                                 </p>
@@ -120,7 +125,7 @@
                                         {% endif %}
 
                                         {# FAVS #}
-                                        <div class="favorite">
+                                        {# <div class="favorite">
                                         
                                             {% if is_granted("ROLE_USER") %}
                                                 {% set isFavorite = false %}
@@ -138,20 +143,21 @@
                                                     <i class="far fa-star mx-2"></i>
                                             {% endif %}
                                             
-                                        </div>   
-                                    </p>
+                                        </div>    #}
+                                        </p>
                                         {# FAVS END #}  
                                         
                                         <div class="icons-card">
                                         
                                         {# THUMBS LIKE #}
-                                            <small class="likes">                                        
-                                                <a href="{{path('show_like', {id: show.id})}}">                                                    
-                                                    <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">                                                    
-                                                    <span>{{show.nbLikes}}</span>
+                                            <small>                               
+                                                <a href="{{path('show_like', {id: show.id})}}"> 
+                                                    <img src="{{asset('img/like.svg')}}" alt="thumbs up" class="like">       
+                                                    {{show.nbLikes}}
                                                 </a>
+                                                
                                             </small>
-
+                                            {# FAVS  #}
                                             <div class="favorite">
                                         
                                             {% if is_granted("ROLE_USER") %}
@@ -171,6 +177,7 @@
                                             {% endif %}
                                             
                                             </div> 
+                                            {# FAVS END #}
                                         </div>
 
                                     </div>

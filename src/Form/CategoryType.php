@@ -16,17 +16,15 @@ class CategoryType extends AbstractType
             ->add('name', null, [
                 'label'=>'Titre de la catégorie',
                 'attr'=>[
-                    'class'=>'form-control',
-                    'placeholder'=>'Titre'
+                    'class'=>'form-control'
                 ]
             ])
             ->add('submit', SubmitType::class,[
-                'label'=>'Envoyer',
+                'label'=>'Enregistrer',
                 'attr'=>[
-                    'class'=>'btn btn-secondary mb-3'
-                ]
-            ])
-        ;
+                    'class'=>'badge btn-bo edit'
+                ]                
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
