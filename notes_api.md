@@ -1,8 +1,8 @@
 # API
 
-## Endpoints :
+## Endpoints
 
-TvShow : 
+TvShow :
 
 - Liste des séries `/api/v1/tvshows` - GET
 - Une série par ID `/api/v1/tvshows/{id}` - GET
@@ -16,11 +16,9 @@ Categories :
 - Liste des catégories `/api/v1/categories`
 - Catégorie par ID `/api/v1/categories/{id}`
 
-
 ## Liste des meilleurs pratiques pour une API RESTful
 
->>DOC : https://medium.com/@mwaysolutions/10-best-practices-for-better-restful-api-cbe81b06f291
-
+>>DOC : <https://medium.com/@mwaysolutions/10-best-practices-for-better-restful-api-cbe81b06f291>
 
 **L'API Rest a certains codes :**
 
@@ -28,16 +26,15 @@ Categories :
 - Si on est au pluriel, on reste au pluriel. Si singulier, tout doit être au singulier, il est interdit de mixer
 - Utiliser un CRUD et respecter le protocole HTTP : par exemple GET ne sers que à la lecture, pas de GET pour un formulaire, on ne modifie pas avec GET
 
-    - GET : lire 
+  - GET : lire
 
-    - POST : créer 
+  - POST : créer
 
-    - PUT : mettre à jour toutes les propriétés
+  - PUT : mettre à jour toutes les propriétés
 
-    - PATCH : met à jour partiellement 
+  - PATCH : met à jour partiellement
 
-    - DELETE : supprime 
-
+  - DELETE : supprime
 
 - Accéder à des sous ressources, grâce à des sources mères
 - HATEOAS : Hypermedia as the Engine of Application State. C'est un principe que les liens doivent être utilisés pour créer une meilleure navigation à travers l'API.
@@ -76,7 +73,7 @@ On peut utiliser ce genre de code :
 
 ## Créer un nouveau controller
 
-Sans template : 
+Sans template :
 
 ```bash
 php bin/console make:controller --no-template
@@ -87,10 +84,9 @@ php bin/console make:controller --no-template
 
 ### Pour récupérer toutes les séries
 
->>DOC : https://symfony.com/doc/current/components/serializer.html#attributes-groups
+>>DOC : <https://symfony.com/doc/current/components/serializer.html#attributes-groups>
 
  Dans le controller, on va récupérer via le TvShowRepository toutes les séries
-
 
  ```php
     public function index(TvShowRepository $tvShowRepository): Response
@@ -104,14 +100,14 @@ php bin/console make:controller --no-template
 
 Pour éviter de bugger à cause des éléments liés à l'Entity, on va aider le composant serialiser à transformer un tableau JSON, en lui les indiquant les propriétés à appeler dans les entity que l'ont veut récupérer.
 
-**_Exemple_**
+***Exemple***
 En allant dans Entity\TvShow :
 
 Mettre en Use :
 
 `use Symfony\Component\Serializer\Annotation\Groups;`
 
-Et ensuite on ajoute en annotation sur chaque propriété que l'on souhaite récupérer 
+Et ensuite on ajoute en annotation sur chaque propriété que l'on souhaite récupérer
 
 *par exemple ici : ID / title/ synopsis / images / nbLikes / publishedAt / createdAt / updatedAt / slug*
 
@@ -119,7 +115,7 @@ Pour le moment pas encore de propriété qui font partie d'une entité étrangè
 
 `@Groups({"tvshow_list", "tvshow_detail"})`
 
-Retour au controller, et sur le `return $this->json`, nous allons rajouter en argument de sortie, la variable du findAll, le code du statut HTTP (Api Rest), un tableau (headers) vide, et ensuite un tableau de contexte avec d'un côté 'groups' qui permets de récupérer l'annotation dans l'entity et en face le tag du groupe voulu mis en annotation dans l'Entity. 
+Retour au controller, et sur le `return $this->json`, nous allons rajouter en argument de sortie, la variable du findAll, le code du statut HTTP (Api Rest), un tableau (headers) vide, et ensuite un tableau de contexte avec d'un côté 'groups' qui permets de récupérer l'annotation dans l'entity et en face le tag du groupe voulu mis en annotation dans l'Entity.
 Ce qui donne concrètement :
 
 ```php
